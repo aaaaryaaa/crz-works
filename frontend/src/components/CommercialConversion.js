@@ -23,7 +23,7 @@ export default function CommercialConversion() {
     }, [filter,applications]);
     const func=async()=>{
         const response=await axios.post('/api/form/adminformsrej',{a});
-        console.log(response);
+      
         SetApplications(response.data.forms);
         
     
