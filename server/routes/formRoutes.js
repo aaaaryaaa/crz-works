@@ -20,7 +20,7 @@ router.post('/adminformsacc',agetallformsacc);
 router.post('/adminformsrej',agetallformsrej);
 router.post('/adminProjec',agetallformsrejSub)
 //accepting and rejecting
-router.post('/accept',upload.single('clearance'),acceptForm);
+router.post('/accept',upload.single('clearancectf'),acceptForm);
 router.post('/rejectForm',rejectForm);
 
 
