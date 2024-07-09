@@ -9,7 +9,7 @@ const Navbar = () => {
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const [logged, setLogged] = useState(localStorage.getItem('token'));
-    const [role, setRole] = useState('ADMIN');//useState(localStorage.getItem('role'));
+    const [role, setRole] = useState(localStorage.getItem('role'));
     const dropdownRef = useRef(null);
     const navigate = useNavigate();
 
@@ -22,6 +22,7 @@ const Navbar = () => {
         localStorage.removeItem('name');
         localStorage.removeItem('ph_no');
         localStorage.removeItem('role');
+        localStorage.clear();
         navigate('/');
         toast.success("logged out");
     };
@@ -77,8 +78,8 @@ const Navbar = () => {
 
     useEffect(() => {
         setLogged(localStorage.getItem('token'));
-        setRole('ADMIN');
-        //setRole(localStorage.getItem('role'));
+        //setRole('ADMIN');
+        setRole(localStorage.getItem('role'));
     }, [localStorage.getItem('token'), localStorage.getItem('role')]);
 
     return (
@@ -102,17 +103,22 @@ const Navbar = () => {
                         </div>
                         <div className="flex items-center lg:pt-5 pt-2">
                             <div className="hidden md:flex space-x-10">
-                                {role !== 'ADMIN' ? (
+                                {role!=='ADMIN' &&(
                                     <>
-                                        <button onClick={handleGoHome} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('home')}</button>
-                                        <button onClick={handleAbout} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('aboutUs')}</button>
+                                    <button onClick={handleGoHome} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('home')}</button>
+                                <button onClick={handleAbout} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('aboutUs')}</button>
+                                    </>
+                                )}
+                                {role == 'USER' && (
+                                    <>
                                         <button onClick={handleNewAppl} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('newApplication')}</button>
                                         <button onClick={handlePrevAppl} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('pendingPreviousApplication')}</button>
                                         {/* <button onClick={handleViewAppl} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('viewApplication')}</button>
                                         <button onClick={handleUpdateAppl} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('updateApplication')}</button> */}
                                         <button onClick={handleForm} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('forms')}</button>
                                     </>
-                                ) : (
+                                        )}
+                                {role=='ADMIN' &&(
                                     <>
                                         <button onClick={handleAdmin} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">Home</button>
                                         <button onClick={() => navigate('/resiConversion')} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">Residential Conversion</button>
@@ -155,18 +161,22 @@ const Navbar = () => {
                         ref={dropdownRef}
                     >
                         <button onClick={handleToggle}><img src={crossmark} alt='cross' className='h-10 px-2' /></button>
-
-                        {role !== 'ADMIN' ? (
+                        {role!=='ADMIN' &&(
                             <>
                                 <button onClick={handleGoHome} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('home')}</button>
-                                <button onClick={handleAbout} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('aboutUs')}</button>
+                        <button onClick={handleAbout} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('aboutUs')}</button>
+                            </>
+                        )}
+                        {role === 'USER' && (
+                            <>
                                 <button onClick={handleNewAppl} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('newApplication')}</button>
                                 <button onClick={handlePrevAppl} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('pendingPreviousApplication')}</button>
                                 {/* <button onClick={handleViewAppl} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('viewApplication')}</button>
                                         <button onClick={handleUpdateAppl} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('updateApplication')}</button> */}
                                 <button onClick={handleForm} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">{t('forms')}</button>
                             </>
-                        ) : (
+                )}
+                            {role === 'ADMIN'&&(
                             <>
                                 <button onClick={handleAdmin} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">Home</button>
                                 <button onClick={() => navigate('/resiConversion')} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">Residential Conversion</button>

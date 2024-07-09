@@ -22,12 +22,12 @@ import ViewAppl from './components/ViewAppl';
 
 function App() {
   const [logged, setLogged] = useState(localStorage.getItem('token'));
-  const [role, setRole] = useState('ADMIN');//useState(localStorage.getItem('role'));
+  const [role, setRole] = useState(localStorage.getItem('role'));
 
   useEffect(() => {
     setLogged(localStorage.getItem('token'));
-    setRole('ADMIN');
-    // setRole(localStorage.getItem('role'));
+    //setRole('ADMIN');
+    setRole(localStorage.getItem('role'));
   }, [localStorage.getItem('token'), localStorage.getItem('role')]);
 
   return (
@@ -39,9 +39,7 @@ function App() {
           <Navbar />
         </div>
         <Routes>
-          {role!=='ADMIN' ? (
-            <>
-              <Route
+        <Route
                 path="/login"
                 element={
                   <Login />
@@ -59,6 +57,8 @@ function App() {
                   <About />
                 }
               />
+          {role==='USER' && (
+            <>
               <Route
                 path='/newappl'
                 element={
@@ -90,7 +90,8 @@ function App() {
                 }
               />
             </>
-          ) : (
+          )}
+          {role=='ADMIN' && (
             <>
               <Route
                 path='/admin'
