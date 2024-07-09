@@ -1,6 +1,6 @@
 import express from "express";
 
-import {uploadform1,uploadchalan,uploadRTC,uploadSS,submitform,getallformsnull,getallformsacc,getallformsrej,agetallformsacc,agetallformsnull,agetallformsrej,acceptForm,rejectForm} from "../controllers/formControllers.js";
+import {uploadform1,uploadchalan,uploadRTC,uploadSS,submitform,getallformsnull,getallformsacc,getallformsrej,agetallformsacc,agetallformsnull,agetallformsrej,acceptForm,rejectForm,agetallformsrejSub} from "../controllers/formControllers.js";
 import {upload } from "../middleware/multer.middleware.js"
 
 const router=express.Router();
@@ -16,9 +16,9 @@ router.get('/userformsacc',getallformsacc);
 router.get('/userformsrej',getallformsrej);
 //admin ka forms
 router.post('/adminformsnull',agetallformsnull);
-router.get('/adminformsacc',agetallformsacc);
-router.get('/adminformsrej',agetallformsrej);
-
+router.post('/adminformsacc',agetallformsacc);
+router.post('/adminformsrej',agetallformsrej);
+router.post('/adminProjec',agetallformsrejSub)
 //accepting and rejecting
 router.post('/accept',upload.single('clearance'),acceptForm);
 router.post('/rejectForm',rejectForm);

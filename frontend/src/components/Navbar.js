@@ -124,7 +124,7 @@ const Navbar = () => {
                                         <button onClick={() => navigate('/resiConversion')} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">Residential Conversion</button>
                                         <button onClick={() => navigate('/resiConstruction')} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">Residential Construction</button>
                                         <button onClick={() => navigate('/commConversion')} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">Commercial Conversion</button>
-                                        <button onClick={() => navigate('/commConstruction')} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">Commercial Construction</button>
+                                        <button onClick={() => navigate('/commConstruction')} className="text-black cursor-pointer hover:text-gray-700 font-extrabold">Commercial/government Projects</button>
                                     </>
                                 )}
                             </div>

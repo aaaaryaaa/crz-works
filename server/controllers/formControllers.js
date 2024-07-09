@@ -415,13 +415,13 @@ const agetallformsnull=async(req,res,next)=>{
 const agetallformsacc=async(req,res,next)=>{
     try{
         const pool=await sql.connect(config);
-        const data=pool.request().query(`select * from form_tb where status='accepted'`);
+        const data=pool.request().query(`select * from form_tb where form_type='Residential Construction'`);
         data.then(async(res1)=>{
             if(res1){
                 
                 res.status(200).json({
                     success:true,
-                    message:"all accepted forms returned",
+                    message:"all  forms returned",
                     forms:res1.recordset
                 })
             }
@@ -430,7 +430,7 @@ const agetallformsacc=async(req,res,next)=>{
 
                 res.status(500).json({
                     success:false,
-                    message:"error in getting accepted forms"
+                    message:"error in getting forms"
                 })
             };
          }
@@ -447,13 +447,13 @@ const agetallformsacc=async(req,res,next)=>{
 const agetallformsrej=async(req,res,next)=>{
     try{
         const pool=await sql.connect(config);
-        const data=pool.request().query(`select * from form_tb where status='rejected'`);
+        const data=pool.request().query(`select * from form_tb where form_type='Commercial Conversion'`);
         data.then(async(res1)=>{
             if(res1){
                 
                 res.status(200).json({
                     success:true,
-                    message:"all rejected forms returned",
+                    message:"all forms returned",
                     forms:res1.recordset
                 })
             }
@@ -462,7 +462,7 @@ const agetallformsrej=async(req,res,next)=>{
 
                 res.status(500).json({
                     success:false,
-                    message:"error in getting all rejected forms"
+                    message:"error in getting all  forms"
                 })
             };
          }
@@ -476,17 +476,16 @@ const agetallformsrej=async(req,res,next)=>{
     }
 
 };
-//api calls to get resubmitted forms
 const agetallformsrejSub=async(req,res,next)=>{
     try{
         const pool=await sql.connect(config);
-        const data=pool.request().query(`select * from form_tb where status='null' && reasonRejection <> 'null'`);
+        const data=pool.request().query(`select * from form_tb where form_type='Commercial/government Projects'`);
         data.then(async(res1)=>{
             if(res1){
                 
                 res.status(200).json({
                     success:true,
-                    message:"all rejected and resubmitted  forms returned",
+                    message:"all forms returned",
                     forms:res1.recordset
                 })
             }
@@ -495,7 +494,7 @@ const agetallformsrejSub=async(req,res,next)=>{
 
                 res.status(500).json({
                     success:false,
-                    message:"error in getting all rejected and resubmitted forms"
+                    message:"error in getting all  forms"
                 })
             };
          }
