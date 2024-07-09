@@ -8,7 +8,7 @@ export default function Home() {
   const { t } = useTranslation();
 
   return (
-    <div className="home-page">
+    <div className="home-page text-black">
       <Carousel
         showArrows={true}
         infiniteLoop={true}

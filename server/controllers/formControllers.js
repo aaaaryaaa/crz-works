@@ -589,14 +589,10 @@ const acceptForm=async(req,res,next)=>{
 };
 const rejectForm=async(req,res,next)=>{
     try{
-        const {form_id,rejMessage}=req.body;
-        
+        const {form_id,reasonRejection}=req.body;
 
-    
-
-      
         const pool=await sql.connect(config);
-        const data=pool.request().query(`update form_tb set status='rejected',reasonRejection='${rejMessage}' where form_id='${form_id}'`);
+        const data=pool.request().query(`update form_tb set status='rejected',reasonRejection='${reasonRejection}' where form_id='${form_id}'`);
         data.then(async(res1)=>{
             if(res1){
                 

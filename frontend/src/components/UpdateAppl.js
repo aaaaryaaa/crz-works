@@ -181,7 +181,7 @@ function getImage4(e){
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-10 text-black">
       <div className="bg-blue-50 p-8 shadow-lg lg:w-2/5 w-[90%]">
         <h1 className="text-xl mb-6 text-center">Update Application</h1>
-        <h1 className='text-xl mb-6 text-center break-words'>Reason for Rejection:{form.reasonRejection}</h1>
+        <h1 className='text-xl mb-6 text-center break-words font-semibold bg-red-300 p-2'>Reason for Rejection:{form.reasonRejection}</h1>
         <form onSubmit={handleSubmit} className=''>
           <div className="mb-4">
             <label className="block mb-2">Name of Applicant/Proponent</label>

@@ -14,8 +14,17 @@ function AviewAppl(){
       ph_no:formData.ph_no,
       clearancectf:''
     });
+    const [rejForm,SetRejForm]=useState({
+      form_id:formData.form_id,
+      reasonRejection:''
+    })
   
-  
+    const handleChange = (e) => {
+      const { name, value, type, files, checked } = e.target;
+      
+        SetRejForm({ ...rejForm, [name]: value });
+      
+    };
   const handleClick1=(e)=>{
     e.preventDefault();
     SetStat('acc');
@@ -59,6 +68,25 @@ const handleSubmit = async(e) => {
     toast.error("please upload the certificate");
   }
 };
+const handleSubmit2 = async(e) => {
+  e.preventDefault();
+  if (rejForm.reasonRejection!='') {
+    
+      
+    
+      
+    const response1=await axios.post('/api/form/reject',rejForm);
+    
+    if(response1.status==200){
+      toast.success("rejected form!!");
+      navigate('/admin');
+      }
+    
+  }
+  else{
+    toast.error("please upload the certificate");
+  }
+};
 
 
   
@@ -69,15 +97,27 @@ const handleSubmit = async(e) => {
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-10 text-black">
       <div className="bg-blue-50 p-8 shadow-lg lg:w-2/5 w-[90%]">
         <h1 className="text-xl mb-6 text-center">Application</h1>
-        {formData.reasonRejection!='null' && 
+        {formData.reasonRejection!='null' && formData.status=='null' && 
             <div className='mb-[3rem] '>
             <h1 className="text-xl mb-6 text-center font-semibold">Note: This Application has been rejected Once. The user has made changes and resubmitted it .</h1>
-            <label className='text-xl font-semibold'>Reason For Rejection: {formData.reasonRejection}</label>
+            
             
             </div>
         }
+        {formData.reasonRejection!='null' && <div className='text-xl font-semibold mb-[3rem] bg-red-400 p-2'>Reason For Rejection: {formData.reasonRejection}</div>}
         <div className=''>
-          <div className="mb-4">
+        { formData.status=='accepted'&& <div className="mb-4 ">
+          <a href={formData.clearance} target='_blank' >
+            <label className="block mb-2 font-semibold text-xl"> Click to View and Download Clearance Certificate </label>
+            <input
+              type="text"
+              name="clearancectf"
+              value={formData.clearancepi}
+              className={`w-full p-2 borderborder-gray-300  bg-yellow-200 text-black cursor-pointer hover:bg-blue-400`}
+            />
+            </a>
+          </div>}
+          <div className="mb-4 mt-[2rem]">
             <label className="block mb-2">Name of Applicant/Proponent</label>
             <input
               type="text"
@@ -202,6 +242,7 @@ const handleSubmit = async(e) => {
             />
             </a>
           </div>
+          
 
           
 
@@ -216,7 +257,7 @@ const handleSubmit = async(e) => {
               Go Back
             </button>
           </div>
-          {stat=='acc' && <div className="text-center flex justify-between  mt-[3rem]">
+          {stat=='acc' && <div className="text-center flex justify-center items-center  mt-[3rem]">
           <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block mb-2">Upload Clearance Certificate</label>
@@ -236,8 +277,26 @@ const handleSubmit = async(e) => {
           
           </form>
           </div>}
-          {stat=='rej' && <div className="text-center flex justify-between  mt-[3rem]">
-            rejected
+          {stat=='rej' && <div className="text-center flex justify-center items-center  mt-[3rem]">
+            <form onSubmit={handleSubmit2}>
+            <div className="mb-4 w-[25rem]">
+            <label className="block mb-2">Reason For Rejection</label>
+            <textarea
+              name="reasonRejection"
+              value={formD.reasonRejection}
+              onChange={handleChange}
+              rows="6"
+              className={`w-full p-2 border ${errors.reasonRejection ? 'border-red-500' : 'border-gray-300'}  bg-yellow-200 text-black`}
+            />
+         
+          </div>
+          <div className="text-center">
+            <button type="submit" className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700">
+              Reject Form
+            </button>
+          </div>
+          
+          </form>
             </div>}
         </div>
       </div>

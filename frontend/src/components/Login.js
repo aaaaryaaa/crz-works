@@ -83,7 +83,7 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center sm:m-5">
+        <div className="min-h-screen flex items-center justify-center sm:m-5 text-black">
             <div className="lg:bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
                 <img src={usericon} alt="user" className='w-fit ml-auto mr-auto h-[6rem]' />
                 <h2 className='text-lg font-bold mb-6 text-gray-800'>An OTP will be sent for Sign In</h2>

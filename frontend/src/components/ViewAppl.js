@@ -12,6 +12,17 @@ export default function ViewAppl() {
       <div className="bg-blue-50 p-8 shadow-lg lg:w-2/5 w-[90%]">
         <h1 className="text-xl mb-6 text-center">Application</h1>
         <form className=''>
+        { formData.status=='accepted'&& <div className="mb-4 mt-[3rem]">
+          <a href={formData.clearance} target='_blank' >
+            <label className="block mb-2 font-semibold text-xl"> Click to View and Download Clearance Certificate </label>
+            <input
+              type="text"
+              name="clearancectf"
+              value={formData.clearancepi}
+              className={`w-full p-2 borderborder-gray-300  bg-yellow-200 text-black cursor-pointer hover:bg-blue-400`}
+            />
+            </a>
+          </div>}
           <div className="mb-4">
             <label className="block mb-2">Name of Applicant/Proponent</label>
             <input
@@ -129,6 +140,7 @@ export default function ViewAppl() {
               className={`w-full p-2 borderborder-gray-300  bg-yellow-200 text-black`}
             />
           </div>
+         
 
           
 

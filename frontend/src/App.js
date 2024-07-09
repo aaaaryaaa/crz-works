@@ -30,6 +30,11 @@ function App() {
     //setRole('ADMIN');
     setRole(localStorage.getItem('role'));
   }, [localStorage.getItem('token'), localStorage.getItem('role')]);
+  useEffect(()=>{
+    setLogged(localStorage.getItem('token'));
+    //setRole('ADMIN');
+    setRole(localStorage.getItem('role'));
+  },[])
 
   return (
     <div className="App bg-gray-100">
@@ -58,8 +63,7 @@ function App() {
                   <About />
                 }
               />
-          {role==='USER' && (
-            <>
+      
               <Route
                 path='/newappl'
                 element={
@@ -90,10 +94,7 @@ function App() {
                   <ImpForms />
                 }
               />
-            </>
-          )}
-          {role==='ADMIN' && (
-            <>
+         
               <Route
                 path='/admin'
                 element={
@@ -130,8 +131,7 @@ function App() {
                   <AviewAppl />
                 }
               />
-            </>
-          )}
+          
           <Route path="*" element={<NotFound/>} />
         </Routes>
         <Footer />
