@@ -16,6 +16,7 @@ import NotFound from './components/NotFound';
 import PrevAppl from './components/PrevAppl';
 import ResidentialConstruction from './components/ResidentialConstruction';
 import ResidentialConversion from './components/ResidentialConversion';
+import AviewAppl from './components/AviewAppl';
 import UpdateAppl from './components/UpdateAppl';
 import { Toaster } from 'react-hot-toast';
 import ViewAppl from './components/ViewAppl';
@@ -91,7 +92,7 @@ function App() {
               />
             </>
           )}
-          {role=='ADMIN' && (
+          {role==='ADMIN' && (
             <>
               <Route
                 path='/admin'
@@ -121,6 +122,12 @@ function App() {
                 path='/commConstruction'
                 element={
                   <CommercialConstruction />
+                }
+              />
+              <Route
+                path='/adminviewappl'
+                element={
+                  <AviewAppl />
                 }
               />
             </>

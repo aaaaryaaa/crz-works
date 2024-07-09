@@ -383,7 +383,7 @@ const getallformsrej=async(req,res,next)=>{
 const agetallformsnull=async(req,res,next)=>{
     try{
         const pool=await sql.connect(config);
-        const data=pool.request().query(`select * from form_tb where status='null' and reasonRejection='null'`);
+        const data=pool.request().query(`select * from form_tb where form_type='Residential Conversion'`);
         data.then(async(res1)=>{
             if(res1){
                 

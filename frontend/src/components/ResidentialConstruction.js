@@ -23,8 +23,8 @@ export default function ResidentialConstruction() {
     }, [filter]);
 
     return (
-        <div>
-            <h1 className='w-full m-5 text-3xl font-bold'>Residential Construction</h1>
+        <div className='text-black'>
+            <h1 className='w-full m-5 text-3xl font-bold '>Residential Construction</h1>
             <div className="flex h-screen">
                 <div className="w-1/4 bg-gray-200 shadow-md p-4">
                     <div className="text-xl font-semibold mb-4">Filter Applications</div>

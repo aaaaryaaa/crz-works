@@ -15,7 +15,7 @@ router.post('/userformsnull',getallformsnull);
 router.get('/userformsacc',getallformsacc);
 router.get('/userformsrej',getallformsrej);
 //admin ka forms
-router.get('/adminformsnull',agetallformsnull);
+router.post('/adminformsnull',agetallformsnull);
 router.get('/adminformsacc',agetallformsacc);
 router.get('/adminformsrej',agetallformsrej);
 
