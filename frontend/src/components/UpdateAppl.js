@@ -38,6 +38,40 @@ export default function UpdateAppl() {
     chalan:'',
     agree: false,
   });
+  const villageOptions = {
+    Brahmavara: [
+      'Baikadi', 'Handadi', 'Haradi', 'Havanje', 'Kumragodu', 'Matapadi',
+      'Neelavara', 'Uppuru', 'Varamballi'
+    ],
+    Bynduru: [
+      "Bijuru", "Bynduru", "Hadavu", "Heranjalu", "Kambadakone", "Kergalu",
+      "Kirimanjeshwara", "Maravanthe", "Nada", "Nandanavana", "Navunda",
+      "Senapura", "Paduvari", "Shiruru", "Taggarse", "Uppunda", "Yadthare"
+    ],
+    Kapu: [
+      "Bada", "Palimaru", "Hejamadi", "Innanje", "Kote", "Kurkalu", "Mattu",
+      "Moodabettu", "Muluru", "Nadsalu", "Padu", "Pangala", "Thenka",
+      "Uliyaragoli", "Yenagudde"
+    ],
+    Kota: [
+      "Balkudru", "Gundmi", "Hanehalli", "Herur", "Hosala", "Irodi",
+      "Kacchuru", "Kodi", "Kotathattu", "Manuru", "Moodahadu", "Pandeshwara",
+      "Perampalli"
+    ],
+    Kundapura: [
+      "Angalli", "Basruru", "Beejadi", "Balkuru", "Gopadi", "Gulwadi", "Hangaluru",
+      "Koni", "Koteshwara", "Kumbhashi", "Kundapura", "Vaderahobli", "Thekkatte"
+    ],
+    Udupi: [
+      "Ambalpady", "Anjaru", "Athradi", "Badanidiyuru", "Bellampalli", "Herga", "Kadekar",
+      "Kidiuru", "Kodavuru", "Kukkehalli", "Kuthpadi", "Manipura", "Mooduthonse",
+      "Putturu", "Paduthonse", "Shivalli", "Thenkanidiyuru", "Udyavara"
+    ],
+    Vandse: [
+      "Gangolli", "Gujjadi", "Hakladi", "Hattiangadi",
+      "Hemmadi", "Kattabelthuru", "Hosadu", "Talluru", "Trasi", "Uppinakudru"
+    ],
+  };
   function getImage1(e){
     e.preventDefault();
     const uploadedImage=e.target.files[0];
@@ -244,10 +278,9 @@ function getImage4(e){
               onChange={handleChange}
               className={`w-full p-2 border ${errors.taluk ? 'border-red-500' : 'border-gray-300'}  bg-yellow-200 text-black`}
             >
-              <option value="">Select Taluk</option>
-              <option value="one">1</option>
-              <option value="two">2</option>
-              <option value="three">3</option>
+            <option value="">select Taluk</option>
+            {Object.keys(villageOptions).map((taluk) => (
+              <option key={taluk} value={taluk}>{taluk}</option>))}
             </select>
             {errors.taluk && <p className="text-red-500 text-sm">{errors.taluk}</p>}
           </div>
@@ -260,10 +293,10 @@ function getImage4(e){
               onChange={handleChange} 
               className={`w-full p-2 border ${errors.village ? 'border-red-500' : 'border-gray-300'}  bg-yellow-200 text-black`}
             >
-              <option value="">Select Village</option>
-              <option value="one">1</option>
-              <option value="two">2</option>
-              <option value="three">3</option>
+            <option value="">selectVillage</option>
+            {(villageOptions[formData.taluk] || []).map((village) => (
+              <option key={village} value={village}>{village}</option>
+            ))}
             </select>
             {errors.village && <p className="text-red-500 text-sm">{errors.village}</p>}
           </div>
