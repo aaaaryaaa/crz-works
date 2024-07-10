@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast'
+import { ClipLoader } from 'react-spinners';
+
 export default function UpdateAppl() {
   const navigate=useNavigate();
-  const [ph_no,SetPhone]=useState(localStorage.getItem('ph_no'))
+  const [ph_no,SetPhone]=useState(localStorage.getItem('ph_no'));
+  const [isLoading, setIsLoading] = useState(false);
   const {state}=useLocation();
   const form=state;
   console.log(form);
@@ -125,6 +128,7 @@ function getImage4(e){
   const handleSubmit = async(e) => {
     e.preventDefault();
     if (validateForm()) {
+      setIsLoading(true);
       const formData2=new FormData();
         formData2.append("form1",formData.form1);
         formData2.append("ph_no",formData.ph_no);
@@ -174,6 +178,7 @@ function getImage4(e){
       
       }}}}
       
+      setIsLoading(false);
     }
   };
 
@@ -339,8 +344,19 @@ function getImage4(e){
           </div>
 
           <div className="text-center">
-            <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
+            {/* <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
               ReSubmit
+            </button> */}
+            <button
+              type="submit"
+              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <ClipLoader size={20} color={"#ffffff"} loading={isLoading} />
+              ) : (
+                <>Re-Submit</>
+              )}
             </button>
           </div>
         </form>
