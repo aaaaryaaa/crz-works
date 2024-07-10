@@ -208,7 +208,7 @@ const handleSubmit2 = async(e) => {
           </div>
 
           <div className="mb-4">
-          <a href={formData.su1} target='_blank' >
+          <a href={formData.su2} target='_blank' >
             <label className="block mb-2"> Click to View and Download RTC</label>
             <input
                 type="text"
@@ -220,7 +220,7 @@ const handleSubmit2 = async(e) => {
           </div>
 
           <div className="mb-4">
-          <a href={formData.su1} target='_blank' >
+          <a href={formData.su3} target='_blank' >
             <label className="block mb-2">Click to View and Download survey sketch</label>
             <input
              type="text"
@@ -232,7 +232,7 @@ const handleSubmit2 = async(e) => {
           </div>
 
           <div className="mb-4">
-          <a href={formData.su1} target='_blank' >
+          <a href={formData.su4} target='_blank' >
             <label className="block mb-2"> Click to View and Download Challan </label>
             <input
               type="text"
