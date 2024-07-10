@@ -43,7 +43,7 @@ export default function PrevAppl() {
   return (
     <div className="p-4 min-h-screen">
       {renderApplications('accepted', 'bg-green-400', 'bg-green-200', 'Accepted Applications')}
-      {renderApplications('rejected', 'bg-blue-400', 'bg-blue-200', 'Rejected Applications')}
+      {renderApplications('rejected', 'bg-red-400', 'bg-red-200', 'Rejected Applications')}
       {renderApplications('null', 'bg-yellow-400', 'bg-yellow-200', 'Pending Applications')}
     </div>
   );

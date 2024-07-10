@@ -34,7 +34,7 @@ const Login = () => {
                 throw new Error('Failed to send OTP');
             }
             
-            toast.success("OTP sent successfully 12345");
+            toast.success("OTP sent successfully");
             setOtpSent(true);
             setErrors({});
             console.log('OTP sent successfully');
@@ -103,7 +103,7 @@ const Login = () => {
                         {errors.name && <p className="text-red-600 mt-2">{errors.name}</p>}
                     </div>
                     <div className="mb-4">
-                        <label className="block text-black mb-2" htmlFor="ph_no">ph_no No.</label>
+                        <label className="block text-black mb-2" htmlFor="ph_no">Phone No.</label>
                         <div className='flex'>
                             <input
                                 type="text"
